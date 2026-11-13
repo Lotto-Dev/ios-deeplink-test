@@ -1,0 +1,35 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iOS Deep Link Test</title>
+</head>
+<body>
+    <h2>iOS Deep Link Test</h2>
+
+    <button onclick="openApp()">
+        앱 실행하기
+    </button>
+
+    <script>
+        function openApp() {
+            const params = new URLSearchParams(location.search);
+
+            const query = new URLSearchParams();
+
+            const inviteKey = params.get("inviteKey");
+            const productId = params.get("productId");
+            const liveId = params.get("liveId");
+
+            if (inviteKey) query.set("inviteKey", inviteKey);
+            if (productId) query.set("productId", productId);
+            if (liveId) query.set("liveId", liveId);
+
+            location.href =
+                `kakaoa8f4f5ce955c95a5e8eb9d94768b8eea://kakaolink?${query.toString()}`;
+        }
+    </script>
+</body>
+</html>
